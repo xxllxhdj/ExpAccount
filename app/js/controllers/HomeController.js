@@ -1,6 +1,31 @@
 angular.module('ExpAccount.controllers')
 
-.controller('HomeController', ['$scope', function($scope) {
+.controller('HomeController', ['$scope', '$state', 'AccountService', function($scope, $state, AccountService) {
+    $scope.data = {
+        docs: []
+    };
+
+    $scope.addDoc = function () {
+        AccountService.setOperateDoc(0);
+        $state.go('operate');
+    };
+    $scope.editDoc = function (doc) {
+        AccountService.setOperateDoc(1, doc);
+        $state.go('operate');
+    };
+    $scope.deleteDoc = function (index) {
+        $scope.data.docs.splice(index, 1);
+    };
+
+    init();
+
+    function init () {
+        AccountService.getAccounts().then(function (docs) {
+            $scope.data.docs = docs;
+        }).finally(function () {
+            u9.hideLoading();
+        });
+    }
     // $scope.datePick = {
     //     theme: 'ios',
     //     lang: 'zh',

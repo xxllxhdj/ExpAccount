@@ -44,6 +44,13 @@
     top: 64px;
 }
 
+.button-clear.button-clear {
+    color: #666;
+}
+.scroll-content {
+    background: #F7F7F7;
+}
+
 .mbsc-ios.mbsc-fr-bottom .mbsc-fr-overlay,
 .mbsc-ios.mbsc-fr-top .mbsc-fr-overlay {
     background: rgba(0, 0, 0, 0.4);
@@ -87,4 +94,70 @@
     background: #f7f7f7;
 }
 
+.vAccordion--default v-pane {
+    margin: -1px;
+}
+.vAccordion--default v-pane-header {
+    padding: 16px;
+    border: 1px solid #ddd;
+    margin-bottom: 0;
+}
+.vAccordion--default v-pane-header:hover, 
+.vAccordion--default v-pane-header:focus {
+    color: inherit;
+}
+.vAccordion--default v-pane-header::after, 
+.vAccordion--default v-pane-header::before {
+    width: 20px;
+    height: 2px;
+    right: 16px;
+}
+.vAccordion--default v-pane-header > div {
+    font-size: 16px;
+}
+.vAccordion--default v-pane-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+.vAccordion--default v-pane.is-expanded v-pane-content:last-child {
+    border-bottom: 1px solid #ddd;
+}
+.vAccordion--default v-pane-content > div {
+    font-size: 16px;
+    padding-bottom: 0;
+}
+.vAccordion--default v-pane.is-expanded > v-pane-header {
+    border-bottom-color: #ddd;
+}
+
 /**********************************************************Common******************************************************/
+
+/***********************************************************home*******************************************************/
+
+.button-clear.btn-add {
+    color: #35ccf9;
+}
+
+.doc-list .item {
+    margin: 15px;
+}
+.doc-list .item.activated,
+.doc-list .item.activated > .item-content {
+    border-color: #ddd;
+    background-color: #fff;
+}
+
+/***********************************************************home*******************************************************/
+
+/**********************************************************operate*****************************************************/
+
+.operate-view .scroll-content {
+    padding: 0 15px;
+}
+
+.doc-accordion v-pane {
+    margin: 15px 0;
+    background: #fff;
+}
+
+/**********************************************************operate*****************************************************/

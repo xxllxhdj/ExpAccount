@@ -3,6 +3,7 @@ angular.module('ExpAccount', [
     'ionic',
     'mobiscroll-datetime',
     'mobiscroll-select',
+    'vAccordion',
 
     'ExpAccount.controllers',
     'ExpAccount.directives',
@@ -10,13 +11,13 @@ angular.module('ExpAccount', [
     'ExpAccount.utility'
 ])
 
-.run(['$ionicPlatform', 'InitService', function ($ionicPlatform, InitService) {
-    $ionicPlatform.ready(function () {
-        InitService.then(function () {
-            u9.hideLoading();
-        });
-    });
-}])
+// .run(['$ionicPlatform', 'InitService', function ($ionicPlatform, InitService) {
+//     $ionicPlatform.ready(function () {
+//         InitService.then(function () {
+//             u9.hideLoading();
+//         });
+//     });
+// }])
 
 .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider',
     function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -26,6 +27,11 @@ angular.module('ExpAccount', [
                 url: '/home',
                 templateUrl: 'tpls/home.html',
                 controller: 'HomeController'
+            })
+            .state('operate', {
+                url: '/operate',
+                templateUrl: 'tpls/operate.html',
+                controller: 'OperateController'
             });
         $urlRouterProvider.otherwise('/home');
 

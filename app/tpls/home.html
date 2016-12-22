@@ -1,7 +1,16 @@
 
 <ion-view view-title="报销单">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-icon ion-plus btn-add" ng-click="addDoc()"></button>
+    </ion-nav-buttons>
 	<ion-content>
-        <label class="item item-input item-icon-right">
+        <ion-list class="doc-list">
+            <ion-item ng-repeat="doc in data.docs" ng-click="editDoc(doc)">
+                {{ doc.DocNo }}
+                <ion-option-button class="button-assertive" ng-click="deleteDoc($index)">删除</ion-option-button>
+            </ion-item>
+        </ion-list>
+        <!-- <label class="item item-input item-icon-right">
             <span class="input-label">日期</span>
             <input type="text" placeholder="请选择日期" ng-model="testDate" mobiscroll-date="datePick">
             <i class="icon ion-ios-arrow-right"></i>
@@ -10,6 +19,6 @@
             <span class="input-label">选项</span>
             <input type="text" placeholder="请选择" ng-model="testSelect" mobiscroll-select="select" mobiscroll-data="selectDate">
             <i class="icon ion-ios-arrow-right"></i>
-        </label>
+        </label> -->
     </ion-content>
 </ion-view>
