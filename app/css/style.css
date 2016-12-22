@@ -51,16 +51,15 @@
 .mbsc-sel .mbsc-sc-whl-w {
     width: 100%;
 }
+.mbsc-ios .mbsc-sc-whl-gr {
+    padding: 0;
+}
 .mbsc-ios .mbsc-fr-btn {
     color: #35ccf9;
 }
 .mbsc-ios .mbsc-fr-btn-s .mbsc-fr-btn {
     font-weight: normal;
 }
-/*.mbsc-ios.mbsc-fr-bottom .mbsc-fr-btn-cont,
-.mbsc-ios.mbsc-fr-top .mbsc-fr-btn-cont {
-    background: #F7F7F7;
-}*/
 .mbsc-ios.mbsc-fr-bottom .mbsc-fr-popup {
     border-top-color: #ddd;
 }
@@ -81,7 +80,7 @@
 }
 .mbsc-ios.mbsc-fr-bottom .mbsc-sc-whl-o,
 .mbsc-ios.mbsc-fr-top .mbsc-sc-whl-o {
-    background: none;
+    background: linear-gradient(#fefefe, rgba(254,254,254,0) 52%, rgba(254,254,254,0) 48%,#fefefe);
 }
 .mbsc-ios.mbsc-fr-bottom .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c,
 .mbsc-ios.mbsc-fr-top .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c {
