@@ -1,6 +1,8 @@
 
 angular.module('ExpAccount', [
     'ionic',
+    'mobiscroll-datetime',
+    'mobiscroll-select',
 
     'ExpAccount.controllers',
     'ExpAccount.directives',
@@ -22,7 +24,8 @@ angular.module('ExpAccount', [
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'tpls/home.html'
+                templateUrl: 'tpls/home.html',
+                controller: 'HomeController'
             });
         $urlRouterProvider.otherwise('/home');
 

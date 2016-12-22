@@ -1,4 +1,15 @@
 
 <ion-view view-title="报销单">
-	
+	<ion-content>
+        <label class="item item-input item-icon-right">
+            <span class="input-label">日期</span>
+            <input type="text" placeholder="请选择日期" ng-model="testDate" mobiscroll-date="datePick">
+            <i class="icon ion-ios-arrow-right"></i>
+        </label>
+        <label class="item item-input item-icon-right">
+            <span class="input-label">选项</span>
+            <input type="text" placeholder="请选择" ng-model="testSelect" mobiscroll-select="select" mobiscroll-data="selectDate">
+            <i class="icon ion-ios-arrow-right"></i>
+        </label>
+    </ion-content>
 </ion-view>

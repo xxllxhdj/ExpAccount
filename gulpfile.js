@@ -62,7 +62,9 @@ gulp.task('tpls', () => {
 });
 
 gulp.task('fonts', function() {
-    return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function(err) {}))
+    return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function(err) {})
+        .concat('app/lib/*/fonts/**/*.{eot,svg,ttf,woff,woff2}'))
+        .pipe($.flatten())
         .pipe(gulp.dest(path.join(config.dist, 'www/fonts')));
 });
 
@@ -78,6 +80,10 @@ gulp.task('templatecache', function() {
 gulp.task('logo', () => {
     return gulp.src('*.png')
         .pipe(gulp.dest(path.join(config.dist, 'www')));
+});
+gulp.task('lib', () => {
+    return gulp.src('app/lib/**/*')
+        .pipe(gulp.dest(path.join(config.dist, 'www/lib')));
 });
 gulp.task('extras', () => {
     return gulp.src('app.json').pipe(gulp.dest(config.dist));
@@ -110,11 +116,12 @@ gulp.task('build', ['lint', 'html', 'images', 'fonts', 'logo', 'extras'], () => 
 });
 
 gulp.task('default', () => {
-    runSequence('clean', ['wiredep', 'copydep', 'lint', 'images', 'tpls', 'logo', 'extras'], () => {
+    runSequence('clean', ['wiredep', 'copydep', 'lint', 'images', 'tpls', 'lib', 'logo', 'extras'], () => {
         gulp.watch('app/css/**/*.css', ['csslint']);
         gulp.watch('app/js/**/*.js', ['eslint']);
         gulp.watch('app/img/**/*', ['images']);
         gulp.watch('app/tpls/**/*.html', ['tpls']);
+        gulp.watch('app/*.html', ['wiredep']);
     });
 });
 

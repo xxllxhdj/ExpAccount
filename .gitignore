@@ -4,10 +4,7 @@
 .idea/
 node_modules/
 bower_components/
-platforms/
-plugins/
+app/lib/
 .tmp/
 /www/
-/wwws/
-resources/android/
 *.log

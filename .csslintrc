@@ -13,5 +13,6 @@
   "universal-selector": false,
   "unqualified-attributes": false,
   "order-alphabetical": false,
-  "ids": false
+  "ids": false,
+  "fallback-colors": false
 }

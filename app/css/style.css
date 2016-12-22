@@ -44,4 +44,48 @@
     top: 64px;
 }
 
+.mbsc-ios.mbsc-fr-bottom .mbsc-fr-overlay,
+.mbsc-ios.mbsc-fr-top .mbsc-fr-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+.mbsc-sel .mbsc-sc-whl-w {
+    width: 100%;
+}
+.mbsc-ios .mbsc-fr-btn {
+    color: #35ccf9;
+}
+.mbsc-ios .mbsc-fr-btn-s .mbsc-fr-btn {
+    font-weight: normal;
+}
+/*.mbsc-ios.mbsc-fr-bottom .mbsc-fr-btn-cont,
+.mbsc-ios.mbsc-fr-top .mbsc-fr-btn-cont {
+    background: #F7F7F7;
+}*/
+.mbsc-ios.mbsc-fr-bottom .mbsc-fr-popup {
+    border-top-color: #ddd;
+}
+.mbsc-ios .mbsc-dt-whl-m .mbsc-sc-itm,
+.mbsc-ios .mbsc-dt-whl-d .mbsc-sc-itm,
+.mbsc-ios .mbsc-dt-whl-date .mbsc-sc-itm,
+.mbsc-ios .mbsc-dt-whl-h .mbsc-sc-itm {
+    text-align: center;
+}
+
+.mbsc-ios .mbsc-sc-itm.mbsc-btn-a {
+    background: transparent;
+}
+
+.mbsc-ios.mbsc-sc.mbsc-fr-bottom .mbsc-fr-w,
+.mbsc-ios.mbsc-sc.mbsc-fr-top .mbsc-fr-w {
+    background: #fff;
+}
+.mbsc-ios.mbsc-fr-bottom .mbsc-sc-whl-o,
+.mbsc-ios.mbsc-fr-top .mbsc-sc-whl-o {
+    background: none;
+}
+.mbsc-ios.mbsc-fr-bottom .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c,
+.mbsc-ios.mbsc-fr-top .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c {
+    background: #f7f7f7;
+}
+
 /**********************************************************Common******************************************************/
