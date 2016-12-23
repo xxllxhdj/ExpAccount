@@ -11,13 +11,8 @@ angular.module('ExpAccount', [
     'ExpAccount.utility'
 ])
 
-// .run(['$ionicPlatform', 'InitService', function ($ionicPlatform, InitService) {
-//     $ionicPlatform.ready(function () {
-//         InitService.then(function () {
-//             u9.hideLoading();
-//         });
-//     });
-// }])
+.run(['InitService', function (InitService) {
+}])
 
 .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider',
     function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -26,7 +21,12 @@ angular.module('ExpAccount', [
             .state('home', {
                 url: '/home',
                 templateUrl: 'tpls/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                resolve: {
+                    'loading': ['InitService', function (InitService) {
+                        return InitService;
+                    }]
+                }
             })
             .state('operate', {
                 url: '/operate',

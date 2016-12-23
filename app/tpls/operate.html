@@ -7,33 +7,61 @@
             <v-pane expanded>
                 <v-pane-header>基本信息</v-pane-header>
                 <v-pane-content>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
+                    <label class="item item-input item-icon-right">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
+                        <span class="input-label">单据类型</span>
+                        <input type="text" placeholder="请选择单据类型" ng-model="data.doc.DocumentType" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.DocumentTypes">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">报销总金额</span>
+                        <input type="text" ng-model="data.doc.SumReimburseMoney" readonly="true">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">报销日期</span>
+                        <input type="text" ng-model="data.doc.ReimburseDate" readonly="true">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">报销人</span>
+                        <input type="text" ng-model="data.doc.ReimBurseBy" readonly="true">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">报销部门</span>
+                        <input type="text" ng-model="data.doc.ReimBurseDept" readonly="true">
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
+                        <span class="input-label">项目</span>
+                        <input type="text" placeholder="请选择项目" ng-model="data.doc.ExpensePayProject" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayProjects">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <span class="input-label">保证金客户</span>
+                        <input type="text" placeholder="请选择保证金客户" ng-model="data.doc.PrivateDescSeg2" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.MarginClients">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-textarea-input">
+                        <span class="input-label">用途</span>
+                        <textarea ng-model="data.doc.ExpenseUse"></textarea>
+                    </label>
+                    <!-- <label class="item item-input item-icon-right">
+                        <span class="input-label">报销时间</span>
+                        <input type="text" placeholder="请选择日期" ng-model="data.doc.ReimburseDate" mobiscroll-date="data.rdSetting">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label> -->
                 </v-pane-content>
             </v-pane>
-            <v-pane>
+            <!-- <v-pane>
                 <v-pane-header>费用明细</v-pane-header>
                 <v-pane-content>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
-                    <ion-item>测试</ion-item>
                 </v-pane-content>
-            </v-pane>
+            </v-pane> -->
         </v-accordion>
+        <div class="button-bar button-exp-bar">
+            <button class="button">新增费用</button>
+        </div>
     </ion-content>
 </ion-view>

@@ -1,6 +1,6 @@
 angular.module('ExpAccount.services')
 
-.factory('InitService', ['$q', function($q) {
+.factory('InitService', ['$q', 'ReferService', function($q, ReferService) {
     var defer = $q.defer();
 
     init();
@@ -8,7 +8,7 @@ angular.module('ExpAccount.services')
     return defer.promise;
 
     function init() {
-        var tasks = [];
+        var tasks = [ReferService.init];
         $q.all(tasks).finally(function() {
             defer.resolve();
         });
