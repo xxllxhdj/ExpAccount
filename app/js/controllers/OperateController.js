@@ -20,6 +20,10 @@ angular.module('ExpAccount.controllers')
         };
 
         $scope.saveAccount = function () {
+            if (!$scope.data.doc.Expences) {
+                u9.alert('请添加费用明细', '必填项');
+                return;
+            }
             var len = $scope.data.doc.Expences.length;
             for (var i = 0; i < len; i++) {
                 if (!$scope.data.doc.Expences[i].InvoiceMoney) {
