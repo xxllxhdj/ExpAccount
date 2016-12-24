@@ -15,7 +15,10 @@ angular.module('ExpAccount.services')
     $q.all([
         queryDocumentTypes(), 
         queryExpensePayProjects(),
-        queryMarginClients()
+        queryMarginClients(),
+        queryExpenseItems(),
+        queryExpensePayDepts(),
+        queryExpensePayBys()
     ]).finally(function () {
         _defer.resolve();
     });
@@ -58,6 +61,48 @@ angular.module('ExpAccount.services')
                 t.push({ Code: 'MaCt' + i, Name: '客户' + i });
             }
             _refer.MarginClient = t;
+            defer.resolve();
+        }, 100);
+
+        return defer.promise;
+    }
+    function queryExpenseItems() {
+        var defer = $q.defer();
+
+        $timeout(function () {
+            var t = [];
+            for (var i = 10; i <= 50; i++) {
+                t.push({ Code: 'ExpItem' + i, Name: '费用项目' + i });
+            }
+            _refer.ExpenseItem = t;
+            defer.resolve();
+        }, 100);
+
+        return defer.promise;
+    }
+    function queryExpensePayDepts() {
+        var defer = $q.defer();
+
+        $timeout(function () {
+            var t = [{ Code: '', Name: '' }];
+            for (var i = 10; i <= 50; i++) {
+                t.push({ Code: 'ExpPayDept' + i, Name: '列支部门' + i });
+            }
+            _refer.ExpensePayDept = t;
+            defer.resolve();
+        }, 100);
+
+        return defer.promise;
+    }
+    function queryExpensePayBys() {
+        var defer = $q.defer();
+
+        $timeout(function () {
+            var t = [{ Code: '', Name: '' }];
+            for (var i = 10; i <= 50; i++) {
+                t.push({ Code: 'ExpPayDept' + i, Name: '列支人员' + i });
+            }
+            _refer.ExpensePayBy = t;
             defer.resolve();
         }, 100);
 

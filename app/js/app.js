@@ -12,6 +12,9 @@ angular.module('ExpAccount', [
 ])
 
 .run(['InitService', function (InitService) {
+    InitService.then(function () {
+        u9.hideLoading();
+    });
 }])
 
 .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider',

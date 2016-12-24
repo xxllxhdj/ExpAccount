@@ -57,9 +57,37 @@
 .item-input input {
     padding: 0 32px 0 6px;
 }
+.item-input input::-webkit-outer-spin-button,
+.item-input input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    margin: 0; 
+}
+
+.bar .button.button-block, 
+.bar .button.button-full {
+    margin: 0;
+}
 
 .item-input .required-mark-icon {
-    left: -8px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 14px;
+    height: 100%;
+    left: 2px;
     right: auto;
     color: red;
     font-size: 14px;
@@ -185,19 +213,35 @@
 
 /**********************************************************operate*****************************************************/
 
-.operate-view .scroll-content {
-    padding: 0 15px;
-}
-
 .doc-accordion v-pane {
-    margin: 15px 0;
     background: #fff;
 }
+.doc-accordion v-pane:first-child {
+    margin-top: 0;
+}
 
-.button-exp-bar > .button {
-    background: #fff;
-    padding: 0;
-    border-color: #ddd;
+.delete-exp-icon {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 2px;
+    height: 100%;
+    font-size: 28px;
+    right: 36px;
+    color: red;
+    width: 42px;
+    padding: 0 12px;
 }
 
 /**********************************************************operate*****************************************************/

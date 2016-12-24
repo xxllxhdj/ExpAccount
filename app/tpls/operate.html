@@ -1,6 +1,6 @@
 <ion-view view-title="{{data.title}}" class="operate-view">
     <ion-nav-buttons side="right">
-        <button class="button button-clear">保存</button>
+        <button class="button button-clear" ng-click="saveAccount()">保存</button>
     </ion-nav-buttons>
     <ion-content delegate-handle="operateScroll">
         <v-accordion class="vAccordion--default doc-accordion" multiple>
@@ -15,7 +15,7 @@
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">报销总金额</span>
+                        <span class="input-label">报销总金额（CNY）</span>
                         <input type="text" ng-model="data.doc.SumReimburseMoney" readonly="true">
                     </label>
                     <label class="item item-input">
@@ -45,23 +45,55 @@
                     </label>
                     <label class="item item-textarea-input">
                         <span class="input-label">用途</span>
-                        <textarea ng-model="data.doc.ExpenseUse"></textarea>
+                        <textarea placeholder="请输入用途" ng-model="data.doc.ExpenseUse"></textarea>
                     </label>
-                    <!-- <label class="item item-input item-icon-right">
-                        <span class="input-label">报销时间</span>
-                        <input type="text" placeholder="请选择日期" ng-model="data.doc.ReimburseDate" mobiscroll-date="data.rdSetting">
-                        <i class="icon ion-ios-arrow-right"></i>
-                    </label> -->
                 </v-pane-content>
             </v-pane>
-            <!-- <v-pane>
-                <v-pane-header>费用明细</v-pane-header>
+            <v-pane ng-repeat="exp in data.doc.Expences" expanded="exp.isExpanded">
+                <v-pane-header>
+                    {{ '费用明细' + ($index + 1) }}
+                    <i class="icon ion-ios-trash-outline delete-exp-icon" ng-click="deleteExpence($index, $event)"></i>
+                </v-pane-header>
                 <v-pane-content>
+                    <label class="item item-input item-icon-right">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
+                        <span class="input-label">费用项目</span>
+                        <input type="text" placeholder="请选择费用项目" ng-model="exp.ExpenseItem" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenseItems">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
+                        <span class="input-label">发票金额（CNY）</span>
+                        <input type="number" placeholder="请输入发票金额" ng-model="exp.InvoiceMoney" ng-change="changeInvoiceMoney()">
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <span class="input-label">列支部门</span>
+                        <input type="text" placeholder="请选择列支部门" ng-model="exp.ExpensePayDept" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayDepts">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <span class="input-label">列支人员</span>
+                        <input type="text" placeholder="请选择列支人员" ng-model="exp.ExpensePayBy" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayBys">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <span class="input-label">项目</span>
+                        <input type="text" placeholder="请选择项目" ng-model="exp.ExpensePayProject" 
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayProjects">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-textarea-input">
+                        <span class="input-label">事由</span>
+                        <textarea placeholder="请输入事由" ng-model="exp.Reason"></textarea>
+                    </label>
                 </v-pane-content>
-            </v-pane> -->
+            </v-pane>
         </v-accordion>
-        <div class="button-bar button-exp-bar">
-            <button class="button">新增费用</button>
-        </div>
     </ion-content>
+    <ion-footer-bar>
+        <button class="button button-clear button-full" ng-click="addExpence()">新增费用</button>
+    </ion-footer-bar>
 </ion-view>
