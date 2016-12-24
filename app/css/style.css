@@ -159,7 +159,7 @@
     margin: -1px;
 }
 .vAccordion--default v-pane-header {
-    padding: 16px;
+    padding: 14px 16px;
     border: 1px solid #ddd;
     margin-bottom: 0;
 }

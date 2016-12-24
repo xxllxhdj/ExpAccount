@@ -15,7 +15,8 @@
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">报销总金额（CNY）</span>
+                        <span class="input-label">报销总金额</span>
+                        <span>CNY</span>
                         <input type="text" ng-model="data.doc.SumReimburseMoney" readonly="true">
                     </label>
                     <label class="item item-input">
@@ -64,8 +65,9 @@
                     </label>
                     <label class="item item-input">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
-                        <span class="input-label">发票金额（CNY）</span>
-                        <input type="number" placeholder="请输入发票金额" ng-model="exp.InvoiceMoney" ng-change="changeInvoiceMoney()">
+                        <span class="input-label">发票金额</span>
+                        <span>CNY</span>
+                        <input type="number" placeholder="请输入发票金额" ng-model="exp.InvoiceMoney" ng-keyup="onKeyUp($event)">
                     </label>
                     <label class="item item-input item-icon-right">
                         <span class="input-label">列支部门</span>

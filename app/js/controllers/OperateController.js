@@ -20,6 +20,16 @@ angular.module('ExpAccount.controllers')
         };
 
         $scope.saveAccount = function () {
+            var len = $scope.data.doc.Expences.length;
+            for (var i = 0; i < len; i++) {
+                if (!$scope.data.doc.Expences[i].InvoiceMoney) {
+                    break;
+                }
+            }
+            if (i < len) {
+                u9.alert('请输入费用明细' + (i + 1) + '的发票金额', '必填项');
+                return;
+            }
             u9.showLoading();
             AccountService.saveDoc($scope.data.doc).then(function () {
                 $ionicHistory.goBack();
@@ -43,7 +53,11 @@ angular.module('ExpAccount.controllers')
             resizeScroll();
             event.stopPropagation();
         };
-        $scope.changeInvoiceMoney = function () {
+        $scope.onKeyUp = function (e) {
+            var keycode = window.event ? e.keyCode : e.which;
+            if (keycode === 110) {
+                return;
+            }
             updateSumReimburseMoney();
         };
 
