@@ -4,12 +4,19 @@
         <button class="button button-clear button-icon ion-plus btn-add" ng-click="addDoc()"></button>
     </ion-nav-buttons>
 	<ion-content>
-        <ion-list class="doc-list">
-            <ion-item ng-repeat="doc in data.docs" ng-click="editDoc(doc)">
-                {{ doc.DocNo }}
-                <ion-option-button class="button-assertive" ng-click="deleteDoc($index)">删除</ion-option-button>
-            </ion-item>
-        </ion-list>
+        <div class="list doc-list">
+            <div class="item fade-in" ng-repeat="doc in data.docs">
+                <div class="item-line">
+                    <span class="doc-no">{{ doc.DocNo }}</span>
+                    <span>{{ doc.ReimburseDate | date:'yyyy-MM-dd' }}</span>
+                </div>
+                <div class="item-line">
+                    <span>{{ 'CNY' + doc.SumReimburseMoney }}</span>
+                    <i class="icon ion-ios-compose-outline edit-icon" ng-click="editDoc(doc)"></i>
+                    <i class="icon ion-ios-trash-outline delete-icon" ng-click="deleteDoc($index)"></i>
+                </div>
+            </div>
+        </div>
         </label>
     </ion-content>
 </ion-view>

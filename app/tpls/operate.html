@@ -15,21 +15,25 @@
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销总金额</span>
                         <span>CNY</span>
-                        <input type="text" ng-model="data.doc.SumReimburseMoney" readonly="true">
+                        <span>{{data.doc.SumReimburseMoney}}</span>
                     </label>
                     <label class="item item-input">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销日期</span>
-                        <input type="text" ng-model="data.doc.ReimburseDate" readonly="true">
+                        <span>{{data.doc.ReimburseDate | date:'yyyy-MM-dd' }}</span>
                     </label>
                     <label class="item item-input">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销人</span>
-                        <input type="text" ng-model="data.doc.ReimBurseBy" readonly="true">
+                        <span>{{data.doc.ReimBurseBy}}</span>
                     </label>
                     <label class="item item-input">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销部门</span>
-                        <input type="text" ng-model="data.doc.ReimBurseDept" readonly="true">
+                        <span>{{data.doc.ReimBurseDept}}</span>
                     </label>
                     <label class="item item-input item-icon-right">
                         <i class="icon ion-ios-medical required-mark-icon"></i>

@@ -44,6 +44,21 @@
     top: 64px;
 }
 
+@media (min--moz-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .bar {
+        background: transparent;
+    }
+    .bar-header {
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .bar-footer {
+        border-top: 1px solid #e0e0e0;
+    }
+    .bar-subheader {
+        border: none;
+    }
+}
+
 .button-clear.button-clear {
     color: #666;
 }
@@ -105,6 +120,17 @@
     color: #111;
     background: #f8f8f8;
     resize: none;
+}
+
+
+.fade-in.ng-leave,
+.fade-in > .ng-leave {
+    -webkit-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms; 
+}
+.fade-in.ng-leave-active,
+.fade-in > .ng-leave-active {
+    opacity: 0; 
 }
 
 .mbsc-ios.mbsc-fr-bottom .mbsc-fr-overlay,
@@ -201,12 +227,45 @@
 
 .doc-list .item {
     margin: 15px;
-    border: none;
+    padding: 0;
+    border-radius: 6px;
 }
-.doc-list .item.activated,
-.doc-list .item.activated > .item-content {
-    border-color: #ddd;
-    background-color: #fff;
+.doc-list .item-line {
+    position: relative;
+    margin: 10px;
+    color: #666;
+}
+.doc-list .item-line span + span {
+    float: right;
+}
+.doc-list .item-line .doc-no {
+    color: #000;
+}
+.doc-list .item-line .icon {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    font-size: 26px;
+}
+.doc-list .item-line .edit-icon {
+    right: 35px;
+}
+.doc-list .item-line .delete-icon {
+    right: 0;
+    color: red;
 }
 
 /***********************************************************home*******************************************************/
@@ -215,9 +274,6 @@
 
 .doc-accordion v-pane {
     background: #fff;
-}
-.doc-accordion v-pane:first-child {
-    margin-top: 0;
 }
 
 .delete-exp-icon {
