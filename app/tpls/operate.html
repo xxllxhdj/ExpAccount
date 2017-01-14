@@ -18,7 +18,7 @@
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销总金额</span>
                         <span>CNY</span>
-                        <span>{{data.doc.SumReimburseMoney}}</span>
+                        <span>{{data.doc.Money}}</span>
                     </label>
                     <label class="item item-input">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
@@ -28,29 +28,29 @@
                     <label class="item item-input">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销人</span>
-                        <span>{{data.doc.ReimBurseBy}}</span>
+                        <span>{{data.doc.ReimburseUser}}</span>
                     </label>
                     <label class="item item-input">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销部门</span>
-                        <span>{{data.doc.ReimBurseDept}}</span>
+                        <span>{{data.doc.Department}}</span>
                     </label>
                     <label class="item item-input item-icon-right">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">项目</span>
-                        <input type="text" placeholder="请选择项目" ng-model="data.doc.ExpensePayProject" 
+                        <input type="text" placeholder="请选择项目" ng-model="data.doc.Project" 
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayProjects">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input item-icon-right">
                         <span class="input-label">保证金客户</span>
-                        <input type="text" placeholder="请选择保证金客户" ng-model="data.doc.PrivateDescSeg2" 
+                        <input type="text" placeholder="请选择保证金客户" ng-model="data.doc.BondCustomer" 
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.MarginClients">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-textarea-input">
                         <span class="input-label">用途</span>
-                        <textarea placeholder="请输入用途" ng-model="data.doc.ExpenseUse"></textarea>
+                        <textarea placeholder="请输入用途" ng-model="data.doc.Remark"></textarea>
                     </label>
                 </v-pane-content>
             </v-pane>
@@ -63,7 +63,7 @@
                     <label class="item item-input item-icon-right">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">费用项目</span>
-                        <input type="text" placeholder="请选择费用项目" ng-model="exp.ExpenseItem" 
+                        <input type="text" placeholder="请选择费用项目" ng-model="exp.CostProject" 
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenseItems">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
@@ -71,29 +71,29 @@
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">发票金额</span>
                         <span>CNY</span>
-                        <input type="number" placeholder="请输入发票金额" ng-model="exp.InvoiceMoney" ng-keyup="onKeyUp($event)">
+                        <input type="number" placeholder="请输入发票金额" ng-model="exp.Money" ng-keyup="onKeyUp($event)">
                     </label>
                     <label class="item item-input item-icon-right">
                         <span class="input-label">列支部门</span>
-                        <input type="text" placeholder="请选择列支部门" ng-model="exp.ExpensePayDept" 
+                        <input type="text" placeholder="请选择列支部门" ng-model="exp.Department" 
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayDepts">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input item-icon-right">
                         <span class="input-label">列支人员</span>
-                        <input type="text" placeholder="请选择列支人员" ng-model="exp.ExpensePayBy" 
+                        <input type="text" placeholder="请选择列支人员" ng-model="exp.Person" 
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayBys">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input item-icon-right">
                         <span class="input-label">项目</span>
-                        <input type="text" placeholder="请选择项目" ng-model="exp.ExpensePayProject" 
+                        <input type="text" placeholder="请选择项目" ng-model="exp.Project" 
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpensePayProjects">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-textarea-input">
                         <span class="input-label">事由</span>
-                        <textarea placeholder="请输入事由" ng-model="exp.Reason"></textarea>
+                        <textarea placeholder="请输入事由" ng-model="exp.Remark"></textarea>
                     </label>
                 </v-pane-content>
             </v-pane>

@@ -13,8 +13,12 @@ angular.module('ExpAccount.controllers')
         AccountService.setOperateDoc(1, doc);
         $state.go('operate');
     };
-    $scope.deleteDoc = function (index) {
-        $scope.data.docs.splice(index, 1);
+    $scope.deleteDoc = function (doc) {
+        AccountService.deleteDoc(doc.ID).then(function () {
+            init();
+        }, function () {
+            u9.alert('删除失败', '删除报销单');
+        });
     };
 
     $scope.$on('$ionicView.afterEnter', init);

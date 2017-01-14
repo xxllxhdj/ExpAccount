@@ -73,9 +73,9 @@ angular.module('ExpAccount.controllers')
         function updateSumReimburseMoney() {
             var sumReimburseMoney = 0;
             angular.forEach($scope.data.doc.Expences, function (exp) {
-                sumReimburseMoney += exp.InvoiceMoney;
+                sumReimburseMoney += exp.Money;
             });
-            $scope.data.doc.SumReimburseMoney = sumReimburseMoney;
+            $scope.data.doc.Money = sumReimburseMoney;
         }
 
         function init() {
