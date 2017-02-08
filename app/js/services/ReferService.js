@@ -30,7 +30,7 @@ angular.module('ExpAccount.services')
             var defer = $q.defer();
 
             U9Service.post(APPCONSTANTS.GetDocumentType, {
-                DocType: APPCONSTANTS.DocType
+                docType: APPCONSTANTS.DocType
             }).then(function (documentTypes) {
                 _refer.DocumentType = documentTypes;
                 defer.resolve();

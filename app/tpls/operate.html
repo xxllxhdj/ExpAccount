@@ -54,7 +54,7 @@
                     </label>
                 </v-pane-content>
             </v-pane>
-            <v-pane ng-repeat="exp in data.doc.Expences" expanded="exp.isExpanded">
+            <v-pane ng-repeat="exp in data.doc.ReimburseBillDetails" expanded="exp.isExpanded">
                 <v-pane-header>
                     {{ '费用明细' + ($index + 1) }}
                     <i class="icon ion-ios-trash-outline delete-exp-icon" ng-click="deleteExpence($index, $event)"></i>

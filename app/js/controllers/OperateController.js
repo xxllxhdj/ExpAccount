@@ -15,18 +15,18 @@ angular.module('ExpAccount.controllers')
             theme: 'ios',
             lang: 'zh',
             display: 'bottom',
-            dataValue: 'Code',
+            dataValue: 'ID',
             dataText: 'Name'
         };
 
         $scope.saveAccount = function () {
-            if (!$scope.data.doc.Expences) {
+            if (!$scope.data.doc.ReimburseBillDetails) {
                 u9.alert('请添加费用明细', '必填项');
                 return;
             }
-            var len = $scope.data.doc.Expences.length;
+            var len = $scope.data.doc.ReimburseBillDetails.length;
             for (var i = 0; i < len; i++) {
-                if (!$scope.data.doc.Expences[i].InvoiceMoney) {
+                if (!$scope.data.doc.ReimburseBillDetails[i].Money) {
                     break;
                 }
             }
@@ -43,16 +43,19 @@ angular.module('ExpAccount.controllers')
         };
 
         $scope.addExpence = function () {
-            if (!$scope.data.doc.Expences) {
-                $scope.data.doc.Expences = [];
+            if (!$scope.data.doc.ReimburseBillDetails) {
+                $scope.data.doc.ReimburseBillDetails = [];
             }
-            $scope.data.doc.Expences.push({
-                isExpanded: true
-            });
+            var tmp = { isExpanded: true };
+            if (angular.isArray($scope.data.ExpenseItems) && $scope.data.ExpenseItems.length > 0) {
+                tmp.CostProject = $scope.data.ExpenseItems[0].ID;
+            }
+            tmp.Project = $scope.data.doc.Project;
+            $scope.data.doc.ReimburseBillDetails.push(tmp);
             $ionicScrollDelegate.$getByHandle('operateScroll').scrollBottom(true);
         };
         $scope.deleteExpence = function (index, event) {
-            $scope.data.doc.Expences.splice(index, 1);
+            $scope.data.doc.ReimburseBillDetails.splice(index, 1);
             updateSumReimburseMoney();
             resizeScroll();
             event.stopPropagation();
@@ -72,7 +75,7 @@ angular.module('ExpAccount.controllers')
 
         function updateSumReimburseMoney() {
             var sumReimburseMoney = 0;
-            angular.forEach($scope.data.doc.Expences, function (exp) {
+            angular.forEach($scope.data.doc.ReimburseBillDetails, function (exp) {
                 sumReimburseMoney += exp.Money;
             });
             $scope.data.doc.Money = sumReimburseMoney;
@@ -82,6 +85,21 @@ angular.module('ExpAccount.controllers')
             var operateInfo = AccountService.getOperateDoc();
             $scope.data.title = operateInfo.operate === 0 ? '新增' : operateInfo.doc.DocNo;
             $scope.data.doc = operateInfo.doc;
+
+            if (operateInfo.operate !== 0) {
+                return;
+            }
+            $scope.data.doc.Money = 0;
+            $scope.data.doc.ReimburseDate = new Date();
+            if (angular.isArray($scope.data.DocumentTypes) && $scope.data.DocumentTypes.length > 0) {
+                $scope.data.doc.DocumentType = $scope.data.DocumentTypes[0].ID;
+            }
+            if (angular.isArray($scope.data.ExpensePayProjects) && $scope.data.ExpensePayProjects.length > 0) {
+                $scope.data.doc.Project = $scope.data.ExpensePayProjects[0].ID;
+            }
+            if (angular.isArray($scope.data.MarginClients) && $scope.data.MarginClients.length > 0) {
+                $scope.data.doc.BondCustomer = $scope.data.MarginClients[0].ID;
+            }
         }
 
         function resizeScroll() {

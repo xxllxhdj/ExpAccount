@@ -64,7 +64,7 @@ angular.module('ExpAccount.services')
         var defer = $q.defer();
 
         U9Service.post(APPCONSTANTS.GetReimburseBillList, {
-            UserCode: u9.getLoginData().UserCode
+            userID: 1001609190006015
         }).then(function(docs) {
             _docs = docs;
             defer.resolve();

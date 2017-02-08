@@ -6,7 +6,7 @@ angular.module('ExpAccount.controllers')
     };
 
     $scope.addDoc = function () {
-        AccountService.setOperateDoc(0, { ReimburseDate: new Date() });
+        AccountService.setOperateDoc(0, {});
         $state.go('operate');
     };
     $scope.editDoc = function (doc) {
