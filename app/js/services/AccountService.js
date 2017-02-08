@@ -27,7 +27,7 @@ angular.module('ExpAccount.services')
 
         var operateName = (_operate === 0) ? APPCONSTANTS.CreateReimburseBill : APPCONSTANTS.UpdateReimburseBill;
 
-        U9Service.post(operateName, { ReimburseBillInfo: doc }).then(function() {
+        U9Service.post(operateName, { reimburseBillInfo: doc }).then(function() {
             return getReimburseBillList();
         }).then(function() {
             defer.resolve();
