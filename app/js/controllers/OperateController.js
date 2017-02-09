@@ -4,12 +4,11 @@ angular.module('ExpAccount.controllers')
     function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, ReferService) {
         $scope.data = {};
 
-        $scope.data.DocumentTypes = ReferService.get('DocumentType');
-        $scope.data.ExpensePayProjects = ReferService.get('ExpensePayProject');
-        $scope.data.MarginClients = ReferService.get('MarginClient');
-        $scope.data.ExpenseItems = ReferService.get('ExpenseItem');
-        $scope.data.ExpensePayDepts = ReferService.get('ExpensePayDept');
-        $scope.data.ExpensePayBys = ReferService.get('ExpensePayBy');
+        angular.forEach([
+            'DocumentType', 'Project', 'BondCustomer', 'CostProject', 'ExpenditureDepartment', 'ExpenditurePerson'
+        ], function (referName) {
+            $scope.data[referName] = ReferService.get(referName);
+        });
 
         $scope.data.selectSetting = {
             theme: 'ios',
