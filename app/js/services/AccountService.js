@@ -25,6 +25,8 @@ angular.module('ExpAccount.services')
     o.saveDoc = function(doc) {
         var defer = $q.defer();
 
+        doc.ReimburseDate = toJavaTime(doc.ReimburseDate);
+
         var operateName = (_operate === 0) ? APPCONSTANTS.CreateReimburseBill : APPCONSTANTS.UpdateReimburseBill;
 
         U9Service.post(operateName, { reimburseBillInfo: doc }).then(function() {
@@ -66,6 +68,9 @@ angular.module('ExpAccount.services')
         U9Service.post(APPCONSTANTS.GetReimburseBillList, {
             userID: 1001609190006015
         }).then(function(docs) {
+            angular.forEach(docs, function (doc) {
+                doc.ReimburseDate = toJsTime(doc.ReimburseDate);
+            });
             _docs = docs;
             defer.resolve();
         }, function() {
@@ -73,5 +78,25 @@ angular.module('ExpAccount.services')
         });
 
         return defer.promise;
+    }
+
+    function toJsTime(date) {
+        return new Date(parseInt(date.replace(/\/Date\((\d+\+\d+)\)\//g, '$1')));
+    }
+
+    function toJavaTime(date) {
+        var timeZone = date.getTimezoneOffset() / 60,
+            tz = '';
+        if (timeZone < 0) {
+            tz += '+';
+            timeZone = -1 * timeZone;
+        } else {
+            tz += '-';
+        }
+        if (timeZone < 10) {
+            tz += '0';
+        }
+        tz += timeZone;
+        return '\/Date(' + date.valueOf() + tz + '00)\/';
     }
 }]);

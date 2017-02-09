@@ -36,7 +36,9 @@ angular.module('ExpAccount.controllers')
             }
             u9.showLoading();
             var tmp = angular.copy($scope.data.doc);
-            tmp.ReimburseDate = '\/Date(' + tmp.ReimburseDate.valueOf() + '+0800)\/';
+            angular.forEach(tmp.ReimburseBillDetails, function (detail) {
+                delete detail.isExpanded;
+            });
             AccountService.saveDoc(tmp).then(function () {
                 $ionicHistory.goBack();
             }).finally(function () {
