@@ -50,8 +50,8 @@ angular.module('ExpAccount.controllers')
                 $scope.data.doc.ReimburseBillDetails = [];
             }
             var tmp = { isExpanded: true };
-            if (angular.isArray($scope.data.ExpenseItems) && $scope.data.ExpenseItems.length > 0) {
-                tmp.CostProject = $scope.data.ExpenseItems[0].ID;
+            if (angular.isArray($scope.data.CostProject) && $scope.data.CostProject.length > 0) {
+                tmp.CostProject = $scope.data.CostProject[0].ID;
             }
             tmp.Project = $scope.data.doc.Project;
             $scope.data.doc.ReimburseBillDetails.push(tmp);
@@ -94,14 +94,14 @@ angular.module('ExpAccount.controllers')
             }
             $scope.data.doc.Money = 0;
             $scope.data.doc.ReimburseDate = new Date();
-            if (angular.isArray($scope.data.DocumentTypes) && $scope.data.DocumentTypes.length > 0) {
-                $scope.data.doc.DocumentType = $scope.data.DocumentTypes[0].ID;
+            if (angular.isArray($scope.data.DocumentType) && $scope.data.DocumentType.length > 0) {
+                $scope.data.doc.DocumentType = $scope.data.DocumentType[0].ID;
             }
-            if (angular.isArray($scope.data.ExpensePayProjects) && $scope.data.ExpensePayProjects.length > 0) {
-                $scope.data.doc.Project = $scope.data.ExpensePayProjects[0].ID;
+            if (angular.isArray($scope.data.Project) && $scope.data.Project.length > 0) {
+                $scope.data.doc.Project = $scope.data.Project[0].ID;
             }
-            if (angular.isArray($scope.data.MarginClients) && $scope.data.MarginClients.length > 0) {
-                $scope.data.doc.BondCustomer = $scope.data.MarginClients[0].ID;
+            if (angular.isArray($scope.data.BondCustomer) && $scope.data.BondCustomer.length > 0) {
+                $scope.data.doc.BondCustomer = $scope.data.BondCustomer[0].ID;
             }
         }
 

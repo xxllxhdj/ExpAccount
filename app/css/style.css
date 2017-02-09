@@ -1,16 +1,6 @@
 
 /**********************************************************Common******************************************************/
 
-[nav-view-transition="ios"] [nav-view="entering"],
-[nav-view-transition="ios"] [nav-view="leaving"] {
-    -webkit-transition-property: -webkit-transform;
-    transition-property: transform;
-}
-[nav-view-transition="ios"][nav-view-direction="forward"],
-[nav-view-transition="ios"][nav-view-direction="back"] {
-    background-color: transparent;
-}
-
 .platform-ios:not(.fullscreen) .bar-header:not(.bar-subheader) {
     height: 64px; }
 .platform-ios:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
@@ -76,10 +66,10 @@
 .item-input input::-webkit-inner-spin-button{
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
-    margin: 0; 
+    margin: 0;
 }
 
-.bar .button.button-block, 
+.bar .button.button-block,
 .bar .button.button-full {
     margin: 0;
 }
@@ -126,11 +116,11 @@
 .fade-in.ng-leave,
 .fade-in > .ng-leave {
     -webkit-transition: all ease-in-out 250ms;
-    transition: all ease-in-out 250ms; 
+    transition: all ease-in-out 250ms;
 }
 .fade-in.ng-leave-active,
 .fade-in > .ng-leave-active {
-    opacity: 0; 
+    opacity: 0;
 }
 
 .mbsc-ios.mbsc-fr-bottom .mbsc-fr-overlay,
@@ -189,11 +179,11 @@
     border: 1px solid #ddd;
     margin-bottom: 0;
 }
-.vAccordion--default v-pane-header:hover, 
+.vAccordion--default v-pane-header:hover,
 .vAccordion--default v-pane-header:focus {
     color: inherit;
 }
-.vAccordion--default v-pane-header::after, 
+.vAccordion--default v-pane-header::after,
 .vAccordion--default v-pane-header::before {
     width: 20px;
     height: 2px;
