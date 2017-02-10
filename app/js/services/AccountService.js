@@ -28,7 +28,13 @@ angular.module('ExpAccount.services')
 
             doc.ReimburseDate = toJavaTime(doc.ReimburseDate);
 
-            var operateName = (_operate === 0) ? APPCONSTANTS.CreateReimburseBill : APPCONSTANTS.UpdateReimburseBill;
+            var operateName = APPCONSTANTS.CreateReimburseBill;
+            if (_operate === 1) {
+                angular.forEach(doc.ReimburseBillDetails, function (detail) {
+                    doc.RowProcessStatus = 1;
+                });
+                operateName = APPCONSTANTS.UpdateReimburseBill;
+            }
 
             U9Service.post(operateName, { reimburseBillInfo: doc }).then(function() {
                 return getReimburseBillList();
@@ -43,8 +49,12 @@ angular.module('ExpAccount.services')
         o.deleteDoc = function(docId) {
             var defer = $q.defer();
 
-            U9Service.post(APPCONSTANTS.DeleteReimburseBill, { ID: docId }).then(function() {
-                return getReimburseBillList();
+            U9Service.post(APPCONSTANTS.DeleteReimburseBill, { iD: docId }).then(function(success) {
+                if (success) {
+                    return getReimburseBillList();
+                } else {
+                    return $q.reject();
+                }
             }).then(function() {
                 defer.resolve();
             }).catch(function(err) {
@@ -84,7 +94,7 @@ angular.module('ExpAccount.services')
         }
 
         function toJsTime(date) {
-            return new Date(parseInt(date.replace(/\/Date\((\d+\+\d+)\)\//g, '$1')));
+            return new Date(parseInt(date.replace(/\/Date\((\d+[\+\-]\d+)\)\//g, '$1')));
         }
 
         function toJavaTime(date) {

@@ -40,6 +40,8 @@ angular.module('ExpAccount.controllers')
             });
             AccountService.saveDoc(tmp).then(function () {
                 $ionicHistory.goBack();
+            }, function (err) {
+                u9.alert(err.Message || '处理报销单失败', '操作失败');
             }).finally(function () {
                 u9.hideLoading();
             });
