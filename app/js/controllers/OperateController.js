@@ -1,7 +1,7 @@
 angular.module('ExpAccount.controllers')
 
-.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'ReferService',
-    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, ReferService) {
+.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'ReferService', 'User',
+    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, ReferService, User) {
         $scope.data = {};
 
         angular.forEach([
@@ -54,6 +54,8 @@ angular.module('ExpAccount.controllers')
                 tmp.CostProject = $scope.data.CostProject[0].ID;
             }
             tmp.Project = $scope.data.doc.Project;
+            tmp.Person = $scope.data.doc.ReimburseUser;
+            tmp.Department = $scope.data.doc.Department;
             $scope.data.doc.ReimburseBillDetails.push(tmp);
             $ionicScrollDelegate.$getByHandle('operateScroll').scrollBottom(true);
         };
@@ -89,9 +91,14 @@ angular.module('ExpAccount.controllers')
             $scope.data.title = operateInfo.operate === 0 ? '新增' : operateInfo.doc.DocNo;
             $scope.data.doc = operateInfo.doc;
 
+            $scope.data.ReimburseUserName = User.get('UserName');
+            $scope.data.DepartmentName = User.get('DeptName');
+
             if (operateInfo.operate !== 0) {
                 return;
             }
+            $scope.data.doc.ReimburseUser = User.get('UserID');
+            $scope.data.doc.Department = User.get('DeptID');
             $scope.data.doc.Money = 0;
             $scope.data.doc.ReimburseDate = new Date();
             if (angular.isArray($scope.data.DocumentType) && $scope.data.DocumentType.length > 0) {
