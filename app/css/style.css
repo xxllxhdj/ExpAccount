@@ -1,6 +1,16 @@
 
 /**********************************************************Common******************************************************/
 
+[nav-view-transition="ios"] [nav-view="entering"],
+[nav-view-transition="ios"] [nav-view="leaving"] {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+}
+[nav-view-transition="ios"][nav-view-direction="forward"],
+[nav-view-transition="ios"][nav-view-direction="back"] {
+    background-color: transparent;
+}
+
 .platform-ios:not(.fullscreen) .bar-header:not(.bar-subheader) {
     height: 64px; }
 .platform-ios:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
