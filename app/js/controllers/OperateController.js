@@ -10,6 +10,17 @@ angular.module('ExpAccount.controllers')
             $scope.data[referName] = ReferService.get(referName);
         });
 
+        var now = new Date(),
+            minDate = new Date(now.getFullYear() - 10, now.getMonth(), now.getDate()),
+            maxDate = new Date(now.getFullYear() + 10, now.getMonth(), now.getDate());
+        $scope.datePick = {
+            theme: 'ios',
+            lang: 'zh',
+            display: 'bottom',
+            min: minDate,
+            max: maxDate
+        };
+
         $scope.data.selectSetting = {
             theme: 'ios',
             lang: 'zh',
@@ -35,8 +46,14 @@ angular.module('ExpAccount.controllers')
             }
             u9.showLoading();
             var tmp = angular.copy($scope.data.doc);
+            if (tmp.Project === 0) {
+                delete tmp.Project;
+            }
             angular.forEach(tmp.ReimburseBillDetails, function (detail) {
                 delete detail.isExpanded;
+                if (detail.Project === 0) {
+                    delete detail.Project;
+                }
             });
             AccountService.saveDoc(tmp).then(function () {
                 $ionicHistory.goBack();
@@ -93,15 +110,11 @@ angular.module('ExpAccount.controllers')
             $scope.data.title = operateInfo.operate === 0 ? '新增' : operateInfo.doc.DocNo;
             $scope.data.doc = operateInfo.doc;
 
-            $scope.data.ReimburseUserName = User.get('UserName');
-            $scope.data.DepartmentName = User.get('DeptName');
-
             if (operateInfo.operate !== 0) {
                 return;
             }
             $scope.data.doc.ReimburseUser = User.get('UserID');
             $scope.data.doc.Department = User.get('DeptID');
-            $scope.data.doc.Money = 0;
             $scope.data.doc.ReimburseDate = new Date();
             if (angular.isArray($scope.data.DocumentType) && $scope.data.DocumentType.length > 0) {
                 $scope.data.doc.DocumentType = $scope.data.DocumentType[0].ID;

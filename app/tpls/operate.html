@@ -20,23 +20,27 @@
                         <span>CNY</span>
                         <span>{{data.doc.Money}}</span>
                     </label>
-                    <label class="item item-input">
+                    <label class="item item-input item-icon-right">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销日期</span>
-                        <span>{{data.doc.ReimburseDate | date:'yyyy-MM-dd' }}</span>
-                    </label>
-                    <label class="item item-input">
-                        <i class="icon ion-ios-medical required-mark-icon"></i>
-                        <span class="input-label">报销人</span>
-                        <span>{{data.ReimburseUserName}}</span>
-                    </label>
-                    <label class="item item-input">
-                        <i class="icon ion-ios-medical required-mark-icon"></i>
-                        <span class="input-label">报销部门</span>
-                        <span>{{data.DepartmentName}}</span>
+                        <input type="text" placeholder="请选择日期" ng-model="data.doc.ReimburseDate" mobiscroll-datetime="datePick">
+                        <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input item-icon-right">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
+                        <span class="input-label">报销人</span>
+                        <input type="text" placeholder="请选择报销人" ng-model="data.doc.ReimburseUser"
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenditurePerson">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
+                        <i class="icon ion-ios-medical required-mark-icon"></i>
+                        <span class="input-label">报销部门</span>
+                        <input type="text" placeholder="请选择列支部门" ng-model="data.doc.Department"
+                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenditureDepartment">
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </label>
+                    <label class="item item-input item-icon-right">
                         <span class="input-label">项目</span>
                         <input type="text" placeholder="请选择项目" ng-model="data.doc.Project"
                             mobiscroll-select="data.selectSetting" mobiscroll-data="data.Project">
