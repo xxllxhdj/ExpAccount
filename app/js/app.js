@@ -12,12 +12,9 @@ angular.module('ExpAccount', [
 ])
 
 .run(['$window', 'InitService', function ($window, InitService) {
-    if (ionic.Platform.isIOS()) {
-        document.addEventListener('click', function (event) {
-            var hasFocus = document.hasFocus();
-            if (!hasFocus) {
-                $window.focus();
-            }
+    if (ionic.Platform.isIOS() && window.parent) {
+        document.addEventListener('click', function () {
+            $window.focus();
         });
     }
 
