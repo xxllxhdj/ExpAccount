@@ -8,7 +8,7 @@ angular.module('ExpAccount.utility')
     UpdateReimburseBill: 'U9.Cust.GDJT.ISV.ReimburseBillService.IUpdateReimburseBillService',
     DeleteReimburseBill: 'U9.Cust.GDJT.ISV.ReimburseBillService.IDeleteReimburseBillService',
 
-    GetUser: 'U9.Cust.GDJT.ISV.CommonService.IGetUserService',
+    GetUser: 'U9.Cust.GDJT.ISV.CommonService.IGetUserInfoService',
     GetDocumentType: 'U9.Cust.GDJT.ISV.CommonService.IGetDocumentTypeService',
     GetProject: 'U9.Cust.GDJT.ISV.CommonService.IGetProjectService',
     GetBondCustomer: 'U9.Cust.GDJT.ISV.CommonService.IGetBondCustomerService',

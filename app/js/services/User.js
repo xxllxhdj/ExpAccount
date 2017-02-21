@@ -22,12 +22,6 @@ angular.module('ExpAccount.services')
         _user = user;
         _defer.resolve();
     }, function () {
-        _user = {
-            UserID: 1001609190006015,
-            UserName: '张双',
-            DeptID: 1001609140000413,
-            DeptName: '规划设计总部'
-        };
         _defer.resolve();
     });
 

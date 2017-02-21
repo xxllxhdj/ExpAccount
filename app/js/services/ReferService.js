@@ -20,7 +20,7 @@ angular.module('ExpAccount.services')
             batches.push(queryRefer(referName));
         });
         $q.all(batches).finally(function () {
-            _refer.Project.unshift({ ID: 0, Name: ''});
+            _refer.Project.unshift({ ID: 0, Name: '' });
             _defer.resolve();
         });
 
