@@ -1,19 +1,15 @@
 angular.module('ExpAccount.controllers')
 
-.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'ReferService', 'User',
-    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, ReferService, User) {
+.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'SelectModel', 'ReferService', 'User',
+    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, SelectModel, ReferService, User) {
         $scope.data = {};
 
-        angular.forEach([
-            'DocumentType', 'Project', 'BondCustomer', 'CostProject', 'ExpenditureDepartment', 'ExpenditurePerson'
-        ], function (referName) {
-            $scope.data[referName] = ReferService.get(referName);
-        });
+        $scope.data.DocumentType = ReferService.get('DocumentType');
 
         var now = new Date(),
             minDate = new Date(now.getFullYear() - 10, now.getMonth(), now.getDate()),
             maxDate = new Date(now.getFullYear() + 10, now.getMonth(), now.getDate());
-            
+
         $scope.datePick = {
             theme: 'ios',
             lang: 'zh',
@@ -29,6 +25,27 @@ angular.module('ExpAccount.controllers')
             dataValue: 'ID',
             dataText: 'Name'
         };
+
+        angular.forEach([
+            { key: 'ReimburseUser', refer: 'ExpenditurePerson', name: '报销人' },
+            { key: 'Department', refer: 'ExpenditureDepartment', name: '报销部门' },
+            { key: 'Project', refer: 'Project', name: '项目' },
+            { key: 'BondCustomer', refer: 'BondCustomer', name: '保证金客户' },
+            { key: 'CostProject', refer: 'CostProject', name: '费用项目' },
+            { key: 'Person', refer: 'ExpenditurePerson', name: '列支人员' },
+            { key: 'Department', refer: 'ExpenditureDepartment', name: '列支部门' },
+            { key: 'Project', refer: 'Project', name: '项目' }
+        ], function (fn) {
+            $scope['select' + fn.key] = function (tag) {
+                SelectModel.show({
+                    title: fn.name,
+                    list: ReferService.get(fn.refer),
+                    displayField: 'Name'
+                }).then(function (item) {
+                    tag[fn.key] = item;
+                });
+            };
+        });
 
         $scope.saveAccount = function () {
             if (!$scope.data.doc.ReimburseBillDetails) {
@@ -70,8 +87,9 @@ angular.module('ExpAccount.controllers')
                 $scope.data.doc.ReimburseBillDetails = [];
             }
             var tmp = { isExpanded: true };
-            if (angular.isArray($scope.data.CostProject) && $scope.data.CostProject.length > 0) {
-                tmp.CostProject = $scope.data.CostProject[0].ID;
+            var costProject = ReferService.get('CostProject');
+            if (angular.isArray(costProject) && costProject.length > 0) {
+                tmp.CostProject = costProject[0];
             }
             tmp.Project = $scope.data.doc.Project;
             tmp.Person = $scope.data.doc.ReimburseUser;
@@ -114,17 +132,18 @@ angular.module('ExpAccount.controllers')
             if (operateInfo.operate !== 0) {
                 return;
             }
-            $scope.data.doc.ReimburseUser = User.get('UserID');
-            $scope.data.doc.Department = User.get('DeptID');
+            $scope.data.doc.ReimburseUser = {
+                ID: User.get('UserID'),
+                Name: User.get('UserName')
+            };
+            $scope.data.doc.Department = {
+                ID: User.get('DeptID'),
+                Name: User.get('DeptName')
+            };
             $scope.data.doc.ReimburseDate = new Date();
+
             if (angular.isArray($scope.data.DocumentType) && $scope.data.DocumentType.length > 0) {
                 $scope.data.doc.DocumentType = $scope.data.DocumentType[0].ID;
-            }
-            if (angular.isArray($scope.data.Project) && $scope.data.Project.length > 0) {
-                $scope.data.doc.Project = $scope.data.Project[0].ID;
-            }
-            if (angular.isArray($scope.data.BondCustomer) && $scope.data.BondCustomer.length > 0) {
-                $scope.data.doc.BondCustomer = $scope.data.BondCustomer[0].ID;
             }
         }
 

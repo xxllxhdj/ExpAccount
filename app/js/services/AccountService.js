@@ -26,13 +26,30 @@ angular.module('ExpAccount.services')
         o.saveDoc = function(doc) {
             var defer = $q.defer();
 
+            doc.ReimburseUser = doc.ReimburseUser.ID;
+            doc.Department = doc.Department.ID;
+            if (doc.Project) {
+                doc.Project = doc.Project.ID;
+            }
+            if (doc.BondCustomer) {
+                doc.BondCustomer = doc.BondCustomer.ID;
+            }
             doc.ReimburseDate = toJavaTime(doc.ReimburseDate);
+
+            angular.forEach(doc.ReimburseBillDetails, function (detail) {
+                detail.CostProject = detail.CostProject.ID;
+                detail.Department = detail.Department.ID;
+                detail.Person = detail.Person.ID;
+                if (detail.Project) {
+                    detail.Project = detail.Project.ID;
+                }
+                if (_operate === 1) {
+                    detail.RowProcessStatus = 1;
+                }
+            });
 
             var operateName = APPCONSTANTS.CreateReimburseBill;
             if (_operate === 1) {
-                angular.forEach(doc.ReimburseBillDetails, function (detail) {
-                    detail.RowProcessStatus = 1;
-                });
                 operateName = APPCONSTANTS.UpdateReimburseBill;
             }
 
@@ -74,10 +91,6 @@ angular.module('ExpAccount.services')
             U9Service.post(APPCONSTANTS.GetReimburseBill, { iD: docId }).then(function (doc) {
                 delete doc.__type;
                 angular.forEach(doc.ReimburseBillDetails, function (detail) {
-                    detail.CostProject = detail.CostProject.ID;
-                    detail.Department = detail.Department.ID;
-                    detail.Person = detail.Person.ID;
-                    detail.Project = detail.Project.ID;
                     detail.isExpanded = true;
                     delete detail.ReimburseBillQueryInfoDto;
                     delete detail.__type;
@@ -108,10 +121,7 @@ angular.module('ExpAccount.services')
                 userID: User.get('UserID') || -1
             }).then(function(docs) {
                 angular.forEach(docs, function (doc) {
-                    doc.Department = doc.Department.ID;
                     doc.DocumentType = doc.DocumentType.ID;
-                    doc.Project = doc.Project.ID;
-                    doc.ReimburseUser = doc.ReimburseUser.ID;
                     doc.ReimburseDate = toJsTime(doc.ReimburseDate);
 
                     delete doc.__type;

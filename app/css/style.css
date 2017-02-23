@@ -214,6 +214,28 @@
 
 /**********************************************************Common******************************************************/
 
+/********************************************************SelectModel***************************************************/
+
+.select-model .bar-subheader {
+    padding: 3px 5px;
+}
+
+.search-input-form {
+    width: 100%;
+}
+.search-item-input .icon {
+    font-size: 24px;
+}
+.search-item-input .icon:last-child {
+    color: #aaa;
+}
+.search-item-input input {
+    background: transparent;
+    width: 100%;
+}
+
+/********************************************************SelectModel***************************************************/
+
 /***********************************************************home*******************************************************/
 
 .button-clear.btn-add {
@@ -281,6 +303,11 @@
 
 .doc-accordion v-pane {
     background: #fff;
+}
+
+.doc-accordion .item.activated {
+    border-color: #ddd;
+    background-color: #fff;
 }
 
 .delete-exp-icon {

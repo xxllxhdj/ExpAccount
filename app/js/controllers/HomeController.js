@@ -13,14 +13,6 @@ angular.module('ExpAccount.controllers')
         u9.showLoading();
         AccountService.getAccountDetail(doc.ID).then(function (dc) {
             u9.hideLoading();
-            angular.forEach(dc.ReimburseBillDetails, function (detail) {
-                detail.CostProject = detail.CostProject.ID;
-                detail.Department = detail.Department.ID;
-                detail.Person = detail.Person.ID;
-                detail.Project = detail.Project.ID;
-                detail.isExpanded = true;
-                delete detail.ReimburseBillQueryInfoDto;
-            });
             doc.ReimburseBillDetails = dc.ReimburseBillDetails;
             AccountService.setOperateDoc(1, doc);
             $state.go('operate');

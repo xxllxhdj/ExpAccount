@@ -26,30 +26,26 @@
                         <input type="text" placeholder="请选择日期" ng-model="data.doc.ReimburseDate" mobiscroll-date="datePick">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectReimburseUser(data.doc)">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销人</span>
-                        <input type="text" placeholder="请选择报销人" ng-model="data.doc.ReimburseUser"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenditurePerson">
+                        <input type="text" placeholder="请选择报销人" ng-model="data.doc.ReimburseUser.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectDepartment(data.doc)">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">报销部门</span>
-                        <input type="text" placeholder="请选择列支部门" ng-model="data.doc.Department"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenditureDepartment">
+                        <input type="text" placeholder="请选择报销部门" ng-model="data.doc.Department.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectProject(data.doc)">
                         <span class="input-label">项目</span>
-                        <input type="text" placeholder="请选择项目" ng-model="data.doc.Project"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.Project">
+                        <input type="text" placeholder="请选择项目" ng-model="data.doc.Project.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectBondCustomer(data.doc)">
                         <span class="input-label">保证金客户</span>
-                        <input type="text" placeholder="请选择保证金客户" ng-model="data.doc.BondCustomer"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.BondCustomer">
+                        <input type="text" placeholder="请选择保证金客户" ng-model="data.doc.BondCustomer.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-textarea-input">
@@ -64,11 +60,10 @@
                     <i class="icon ion-ios-trash-outline delete-exp-icon" ng-click="deleteExpence($index, $event)"></i>
                 </v-pane-header>
                 <v-pane-content>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectCostProject(exp)">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">费用项目</span>
-                        <input type="text" placeholder="请选择费用项目" ng-model="exp.CostProject"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.CostProject">
+                        <input type="text" placeholder="请选择费用项目" ng-model="exp.CostProject.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input">
@@ -77,22 +72,19 @@
                         <span>CNY</span>
                         <input type="number" placeholder="请输入发票金额" ng-model="exp.Money" ng-keyup="onKeyUp($event)">
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectPerson(exp)">
                         <span class="input-label">列支人员</span>
-                        <input type="text" placeholder="请选择列支人员" ng-model="exp.Person"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenditurePerson">
+                        <input type="text" placeholder="请选择列支人员" ng-model="exp.Person.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectDepartment(exp)">
                         <span class="input-label">列支部门</span>
-                        <input type="text" placeholder="请选择列支部门" ng-model="exp.Department"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.ExpenditureDepartment">
+                        <input type="text" placeholder="请选择列支部门" ng-model="exp.Department.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right">
+                    <label class="item item-input item-icon-right" ng-click="selectProject(exp)">
                         <span class="input-label">项目</span>
-                        <input type="text" placeholder="请选择项目" ng-model="exp.Project"
-                            mobiscroll-select="data.selectSetting" mobiscroll-data="data.Project">
+                        <input type="text" placeholder="请选择项目" ng-model="exp.Project.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-textarea-input">
