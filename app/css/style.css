@@ -229,7 +229,7 @@
     position: relative;
     margin: 10px;
     color: #666;
-    height: 20px;
+    height: 22px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -263,14 +263,16 @@
     font-size: 26px;
 }
 .doc-list .item-line .delete-icon {
-    right: 75px;
+    right: 0;
     color: red;
 }
 .doc-list .item-line .edit-icon {
     right: 35px;
+    color: #35ccf9;
 }
 .doc-list .item-line .submit-icon {
-    right: 0;
+    right: 75px;
+    color: #35ccf9;
 }
 
 /***********************************************************home*******************************************************/

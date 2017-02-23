@@ -32,7 +32,6 @@ angular.module('ExpAccount.services')
             if (_operate === 1) {
                 angular.forEach(doc.ReimburseBillDetails, function (detail) {
                     detail.RowProcessStatus = 1;
-                    delete detail.__type;
                 });
                 operateName = APPCONSTANTS.UpdateReimburseBill;
             }
@@ -40,8 +39,6 @@ angular.module('ExpAccount.services')
             if (!doc.BondCustomer) {
                 delete doc.BondCustomer;
             }
-
-            delete doc.__type;
 
             U9Service.post(operateName, { reimburseBillInfo: doc }).then(function() {
                 return getReimburseBillList();
@@ -71,7 +68,26 @@ angular.module('ExpAccount.services')
             return defer.promise;
         };
         o.getAccountDetail = function(docId) {
-            return U9Service.post(APPCONSTANTS.GetReimburseBill, { iD: docId });
+            var defer = $q.defer();
+
+            
+            U9Service.post(APPCONSTANTS.GetReimburseBill, { iD: docId }).then(function (doc) {
+                delete doc.__type;
+                angular.forEach(doc.ReimburseBillDetails, function (detail) {
+                    detail.CostProject = detail.CostProject.ID;
+                    detail.Department = detail.Department.ID;
+                    detail.Person = detail.Person.ID;
+                    detail.Project = detail.Project.ID;
+                    detail.isExpanded = true;
+                    delete detail.ReimburseBillQueryInfoDto;
+                    delete detail.__type;
+                });
+                defer.resolve(doc);
+            }, function(err) {
+                defer.reject(err);
+            });
+
+            return defer.promise;
         };
         o.getAccounts = function() {
             return _docs;
@@ -97,6 +113,8 @@ angular.module('ExpAccount.services')
                     doc.Project = doc.Project.ID;
                     doc.ReimburseUser = doc.ReimburseUser.ID;
                     doc.ReimburseDate = toJsTime(doc.ReimburseDate);
+
+                    delete doc.__type;
                 });
                 _docs = $filter('orderBy')(docs, ['ReimburseDate', 'DocNo'], true);;
                 defer.resolve();

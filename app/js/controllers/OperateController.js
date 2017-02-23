@@ -13,6 +13,7 @@ angular.module('ExpAccount.controllers')
         var now = new Date(),
             minDate = new Date(now.getFullYear() - 10, now.getMonth(), now.getDate()),
             maxDate = new Date(now.getFullYear() + 10, now.getMonth(), now.getDate());
+            
         $scope.datePick = {
             theme: 'ios',
             lang: 'zh',
