@@ -229,6 +229,13 @@
     position: relative;
     margin: 10px;
     color: #666;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.doc-list .item-line:last-child {
+    padding-right: 100px;
 }
 .doc-list .item-line span + span {
     float: right;
@@ -255,12 +262,15 @@
     height: 100%;
     font-size: 26px;
 }
+.doc-list .item-line .delete-icon {
+    right: 75px;
+    color: red;
+}
 .doc-list .item-line .edit-icon {
     right: 35px;
 }
-.doc-list .item-line .delete-icon {
+.doc-list .item-line .submit-icon {
     right: 0;
-    color: red;
 }
 
 /***********************************************************home*******************************************************/

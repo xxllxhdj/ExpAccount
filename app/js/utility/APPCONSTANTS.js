@@ -4,6 +4,7 @@ angular.module('ExpAccount.utility')
     DocType: 1,
 
     GetReimburseBillList: 'U9.Cust.GDJT.ISV.ReimburseBillService.IGetReimburseBillListService',
+    GetReimburseBill: 'U9.Cust.GDJT.ISV.ReimburseBillService.IGetReimburseBillService',
     CreateReimburseBill: 'U9.Cust.GDJT.ISV.ReimburseBillService.ICreateReimburseBillService',
     UpdateReimburseBill: 'U9.Cust.GDJT.ISV.ReimburseBillService.IUpdateReimburseBillService',
     DeleteReimburseBill: 'U9.Cust.GDJT.ISV.ReimburseBillService.IDeleteReimburseBillService',

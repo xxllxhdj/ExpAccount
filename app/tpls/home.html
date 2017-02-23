@@ -8,12 +8,13 @@
             <div class="item fade-in" ng-repeat="doc in data.docs">
                 <div class="item-line">
                     <span class="doc-no">{{ doc.DocNo }}</span>
-                    <span>{{ doc.ReimburseDate | date:'yyyy-MM-dd' }}</span>
+                    <span>{{ 'CNY' + doc.Money }}</span>
                 </div>
                 <div class="item-line">
-                    <span>{{ 'CNY' + doc.SumReimburseMoney }}</span>
+                    <span>{{ doc.Remark }}</span>
+                    <i class="icon ion-ios-trash-outline delete-icon" ng-click="deleteDoc(doc)"></i>
                     <i class="icon ion-ios-compose-outline edit-icon" ng-click="editDoc(doc)"></i>
-                    <i class="icon ion-ios-trash-outline delete-icon" ng-click="deleteDoc($index)"></i>
+                    <i class="icon ion-ios-upload-outline submit-icon" ng-click="submitDoc(doc)"></i>
                 </div>
             </div>
         </div>

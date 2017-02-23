@@ -1,7 +1,7 @@
 angular.module('ExpAccount.services')
 
-.factory('AccountService', ['$q', 'U9Service', 'User', 'APPCONSTANTS',
-    function($q, U9Service, User, APPCONSTANTS) {
+.factory('AccountService', ['$q', '$filter', 'U9Service', 'User', 'APPCONSTANTS',
+    function($q, $filter, U9Service, User, APPCONSTANTS) {
         var _defer = $q.defer();
 
         var o = {
@@ -31,10 +31,17 @@ angular.module('ExpAccount.services')
             var operateName = APPCONSTANTS.CreateReimburseBill;
             if (_operate === 1) {
                 angular.forEach(doc.ReimburseBillDetails, function (detail) {
-                    doc.RowProcessStatus = 1;
+                    detail.RowProcessStatus = 1;
+                    delete detail.__type;
                 });
                 operateName = APPCONSTANTS.UpdateReimburseBill;
             }
+
+            if (!doc.BondCustomer) {
+                delete doc.BondCustomer;
+            }
+
+            delete doc.__type;
 
             U9Service.post(operateName, { reimburseBillInfo: doc }).then(function() {
                 return getReimburseBillList();
@@ -63,6 +70,9 @@ angular.module('ExpAccount.services')
 
             return defer.promise;
         };
+        o.getAccountDetail = function(docId) {
+            return U9Service.post(APPCONSTANTS.GetReimburseBill, { iD: docId });
+        };
         o.getAccounts = function() {
             return _docs;
         };
@@ -82,9 +92,13 @@ angular.module('ExpAccount.services')
                 userID: User.get('UserID') || -1
             }).then(function(docs) {
                 angular.forEach(docs, function (doc) {
+                    doc.Department = doc.Department.ID;
+                    doc.DocumentType = doc.DocumentType.ID;
+                    doc.Project = doc.Project.ID;
+                    doc.ReimburseUser = doc.ReimburseUser.ID;
                     doc.ReimburseDate = toJsTime(doc.ReimburseDate);
                 });
-                _docs = docs;
+                _docs = $filter('orderBy')(docs, ['ReimburseDate', 'DocNo'], true);;
                 defer.resolve();
             }, function() {
                 defer.resolve();
