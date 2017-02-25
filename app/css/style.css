@@ -45,6 +45,10 @@
 }
 
 @media (min--moz-device-pixel-ratio: 1.5), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+    .bar-header {
+        background-image: none;
+        border-bottom: 1px solid #ddd;
+    }
     .bar-footer {
         background-image: none;
         border-top: 1px solid #ddd;
@@ -220,6 +224,10 @@
     padding: 3px 5px;
 }
 
+.select-model .item {
+    padding: 10px;
+}
+
 .search-input-form {
     width: 100%;
 }
@@ -243,9 +251,9 @@
 }
 
 .doc-list .item {
-    margin: 15px;
+    margin: 15px 0;
     padding: 0;
-    border-radius: 6px;
+    border: none;
 }
 .doc-list .item-line {
     position: relative;
@@ -257,7 +265,7 @@
     white-space: nowrap;
 }
 .doc-list .item-line:last-child {
-    padding-right: 100px;
+    padding-right: 110px;
 }
 .doc-list .item-line span + span {
     float: right;
@@ -303,6 +311,7 @@
 
 .doc-accordion v-pane {
     background: #fff;
+    margin: 15px 0;
 }
 
 .doc-accordion .item.activated {

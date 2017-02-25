@@ -11,7 +11,7 @@
                     <span>{{ 'CNY' + doc.Money }}</span>
                 </div>
                 <div class="item-line">
-                    <span>{{ doc.Remark }}</span>
+                    {{ doc.Remark }}
                     <i class="icon ion-ios-upload-outline submit-icon" ng-if="!doc.DocStatus" ng-click="submitDoc(doc)"></i>
                     <i class="icon ion-ios-compose-outline edit-icon" ng-if="!doc.DocStatus" ng-click="editDoc(doc)"></i>
                     <i class="icon ion-ios-trash-outline delete-icon" ng-click="deleteDoc(doc)"></i>

@@ -61,6 +61,11 @@ angular.module('ExpAccount.utility')
 	    		scope.data.list = list;
 	    	};
 	    	scope.onSearch = function () {
+	    		if (window.parent) {
+	    			parent.ionic.keyboard.hide();;
+	    		} else {
+	    			ionic.keyboard.hide();
+	    		}
 	    	    scope.data.list = $filter('filter')(list, function (item) {
 	    	        if (item[searchBy].indexOf(scope.data.search) !== -1) {
 	    	            return true;
