@@ -41,6 +41,11 @@ angular.module('ExpAccount', [
                 url: '/operate',
                 templateUrl: 'tpls/operate.html',
                 controller: 'OperateController'
+            })
+            .state('lgselect', {
+                url: '/lgselect',
+                templateUrl: 'tpls/lgselect.html',
+                controller: 'LgSelectController'
             });
         $urlRouterProvider.otherwise('/home');
 

@@ -1,7 +1,7 @@
 angular.module('ExpAccount.controllers')
 
-.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'SelectModel', 'ReferService', 'User',
-    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, SelectModel, ReferService, User) {
+.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'LgSelect', 'ReferService', 'User',
+    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, LgSelect, ReferService, User) {
         $scope.data = {};
 
         $scope.data.DocumentType = ReferService.get('DocumentType');
@@ -33,11 +33,11 @@ angular.module('ExpAccount.controllers')
             { key: 'BondCustomer', refer: 'BondCustomer', name: '保证金客户' },
             { key: 'CostProject', refer: 'CostProject', name: '费用项目' },
             { key: 'Person', refer: 'ExpenditurePerson', name: '列支人员' },
-            { key: 'Department', refer: 'ExpenditureDepartment', name: '列支部门' },
+            { key: 'ExpenditureDepartment', refer: 'ExpenditureDepartment', name: '列支部门' },
             { key: 'Project', refer: 'Project', name: '项目' }
         ], function (fn) {
             $scope['select' + fn.key] = function (tag) {
-                SelectModel.show({
+                LgSelect.show({
                     title: fn.name,
                     list: ReferService.get(fn.refer),
                     displayField: 'Name'

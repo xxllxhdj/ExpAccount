@@ -212,31 +212,31 @@
 
 /**********************************************************Common******************************************************/
 
-/********************************************************SelectModel***************************************************/
+/*********************************************************LgSelect*****************************************************/
 
-.select-model .bar-subheader {
+.lg-select-view .bar-subheader {
     padding: 3px 5px;
 }
 
-.select-model .item {
+.lg-select-view .item {
     padding: 10px;
 }
 
-.search-input-form {
+.lg-search-input-form {
     width: 100%;
 }
-.search-item-input .icon {
+.lg-search-item-input .icon {
     font-size: 24px;
 }
-.search-item-input .icon:last-child {
+.lg-search-item-input .icon:last-child {
     color: #aaa;
 }
-.search-item-input input {
+.lg-search-item-input input {
     background: transparent;
     width: 100%;
 }
 
-/********************************************************SelectModel***************************************************/
+/*********************************************************LgSelect*****************************************************/
 
 /***********************************************************home*******************************************************/
 

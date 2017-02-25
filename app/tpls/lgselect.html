@@ -1,0 +1,17 @@
+
+<ion-view class="lg-select-view" view-title="{{data.title}}">
+    <ion-header-bar class="bar-subheader">
+    	<form class="lg-search-input-form" ng-submit="onSearch()">
+	        <label class="item-input-wrapper lg-search-item-input">
+    	        <i class="icon ion-ios-search-strong placeholder-icon"></i>
+    	        <input type="search" placeholder="搜索" ng-model="data.search">
+    	        <i class="icon ion-ios-close" ng-if="data.search" on-tap="clearSearch()"></i>
+	        </label>
+        </form>
+    </ion-header-bar>
+    <ion-content>
+        <ion-item class="select-item" collection-repeat="item in data.list" ng-click="onClick(item)">
+        	{{item[data.displayField]}}
+        </ion-item>
+    </ion-content>
+</ion-view>
