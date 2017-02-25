@@ -245,9 +245,10 @@
 }
 
 .doc-list .item {
-    margin: 15px 0;
+    margin: 15px;
     padding: 0;
     border: none;
+    border-radius: 5px;
 }
 .doc-list .item-line {
     position: relative;
@@ -305,7 +306,6 @@
 
 .doc-accordion v-pane {
     background: #fff;
-    margin: 15px 0;
 }
 
 .doc-accordion .item.activated {
