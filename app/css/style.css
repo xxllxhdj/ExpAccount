@@ -177,6 +177,10 @@
     font-size: 18px;
 }
 
+.mbsc-ios .mbsc-cal-day {
+    padding: .375em;
+}
+
 .vAccordion--default v-pane {
     margin: -1px;
 }
@@ -335,6 +339,19 @@
     color: red;
     width: 42px;
     padding: 0 12px;
+}
+
+.prefix-input > .prefix {
+    position: absolute;
+    padding: 6px 10px 6px 0;
+    left: 35%;
+    margin-left: 10px;
+}
+.prefix-input > input {
+    padding-left: 40px;
+}
+.prefix-input > .cloned-text-input {
+    background-color: #f8f8f8;
 }
 
 /**********************************************************operate*****************************************************/

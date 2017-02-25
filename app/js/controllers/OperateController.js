@@ -18,12 +18,28 @@ angular.module('ExpAccount.controllers')
             max: maxDate
         };
 
-        $scope.data.selectSetting = {
+        $scope.selectSetting = {
             theme: 'ios',
             lang: 'zh',
             display: 'bottom',
             dataValue: 'ID',
             dataText: 'Name'
+        };
+
+        $scope.numPad = {
+            theme: 'ios',
+            lang: 'zh',
+            decimalSeparator: '.',
+            thousandsSeparator: '',
+            display: 'bottom',
+            min: 0.01,
+            max: 99999999999.99,
+            scale: 2,
+            preset: 'decimal',
+            onSet: function () {
+                updateSumReimburseMoney();
+                $scope.apply();
+            }
         };
 
         angular.forEach([
@@ -102,13 +118,6 @@ angular.module('ExpAccount.controllers')
             updateSumReimburseMoney();
             resizeScroll();
             event.stopPropagation();
-        };
-        $scope.onKeyUp = function (e) {
-            var keycode = window.event ? e.keyCode : e.which;
-            if (keycode === 110) {
-                return;
-            }
-            updateSumReimburseMoney();
         };
 
         $scope.$on('vAccordion:onExpandAnimationEnd', resizeScroll);
