@@ -2,7 +2,8 @@ angular.module('ExpAccount.controllers')
 
 .controller('LgSelectController', ['$scope', '$ionicHistory', '$filter', 'LgSelect',
     function($scope, $ionicHistory, $filter, LgSelect) {
-        var _opts = LgSelect.getOpts();
+        var _opts = LgSelect.getOpts(),
+            _select = false;
 
         $scope.data = {};
         $scope.data.title = _opts.title;
@@ -11,8 +12,15 @@ angular.module('ExpAccount.controllers')
 
         $scope.data.search = '';
 
+        $scope.$on('$ionicView.beforeLeave', function () {
+            if (!_select) {
+                _opts.defer.reject();
+            }
+        });
+
         $scope.onClick = function (item) {
             _opts.defer.resolve(item);
+            _select = true;
             $ionicHistory.goBack();
         };
         $scope.clearSearch = function () {
