@@ -53,9 +53,6 @@
         background-image: none;
         border-top: 1px solid #ddd;
     }
-    .bar-subheader {
-        border: none;
-    }
 }
 
 .button-clear.button-clear {
@@ -185,7 +182,8 @@
 }
 .vAccordion--default v-pane-header {
     padding: 14px 16px;
-    border: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     margin-bottom: 0;
 }
 .vAccordion--default v-pane-header:hover,
@@ -200,10 +198,6 @@
 }
 .vAccordion--default v-pane-header > div {
     font-size: 16px;
-}
-.vAccordion--default v-pane-content {
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
 }
 .vAccordion--default v-pane.is-expanded v-pane-content:last-child {
     border-bottom: 1px solid #ddd;
