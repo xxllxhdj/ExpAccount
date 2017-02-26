@@ -187,6 +187,12 @@
 .mbsc-ios .mbsc-np-btn-empty {
     background: #f7f7f7;
 }
+.mbsc-np-dsp {
+    font-size: 26px;
+}
+.mbsc-ios .mbsc-np-btn {
+    font-size: 22px;
+}
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .platform-android .mbsc-ios .mbsc-np-btn {
