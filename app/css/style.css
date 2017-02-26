@@ -188,6 +188,12 @@
     background: #f7f7f7;
 }
 
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .platform-android .mbsc-ios .mbsc-np-btn {
+        border-width: 1px;
+    }
+}
+
 .vAccordion--default v-pane {
     margin: -1px;
 }
