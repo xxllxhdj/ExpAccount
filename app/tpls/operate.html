@@ -48,9 +48,9 @@
                         <input type="text" placeholder="请选择保证金客户" ng-model="data.doc.BondCustomer.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-textarea-input">
+                    <label class="item item-textarea-input" ng-click="inputUse(data.doc)">
                         <span class="input-label">用途</span>
-                        <textarea placeholder="请输入用途" ng-model="data.doc.Remark"></textarea>
+                        <textarea placeholder="请输入用途" ng-model="data.doc.Remark" readonly="true"></textarea>
                     </label>
                 </v-pane-content>
             </v-pane>
@@ -88,9 +88,9 @@
                         <input type="text" placeholder="请选择项目" ng-model="exp.Project.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-textarea-input">
+                    <label class="item item-textarea-input" ng-click="inputReason(exp)">
                         <span class="input-label">事由</span>
-                        <textarea placeholder="请输入事由" ng-model="exp.Remark"></textarea>
+                        <textarea placeholder="请输入事由" ng-model="exp.Remark" readonly="true"></textarea>
                     </label>
                 </v-pane-content>
             </v-pane>

@@ -47,6 +47,11 @@ angular.module('ExpAccount', [
                 url: '/lgselect',
                 templateUrl: 'tpls/lgselect.html',
                 controller: 'LgSelectController'
+            })
+            .state('textinput', {
+                url: '/textinput',
+                templateUrl: 'tpls/textinput.html',
+                controller: 'TextInputController'
             });
         $urlRouterProvider.otherwise('/home');
 

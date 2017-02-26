@@ -1,7 +1,7 @@
 angular.module('ExpAccount.controllers')
 
-.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'LgSelect', 'ReferService', 'User',
-    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, LgSelect, ReferService, User) {
+.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'LgSelect', 'TextInput', 'ReferService', 'User',
+    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, LgSelect, TextInput, ReferService, User) {
         $scope.data = {};
 
         $scope.data.DocumentType = ReferService.get('DocumentType');
@@ -71,8 +71,22 @@ angular.module('ExpAccount.controllers')
             });
         };
 
+        angular.forEach([
+            { key: 'Use', name: '用途' },
+            { key: 'Reason', name: '事由' }
+        ], function (fn) {
+            $scope['input' + fn.key] = function (tag) {
+                TextInput.show({
+                    title: fn.name,
+                    text: tag.Remark
+                }).then(function (text) {
+                    tag.Remark = text;
+                });
+            };
+        });
+
         $scope.saveAccount = function () {
-            if (!$scope.data.doc.ReimburseBillDetails) {
+            if (!$scope.data.doc.ReimburseBillDetails || $scope.data.doc.ReimburseBillDetails.length === 0) {
                 u9.alert('请添加费用明细', '必填项');
                 return;
             }
