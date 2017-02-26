@@ -5,12 +5,12 @@ angular.module('ExpAccount.controllers')
         var _opts = LgSelect.getOpts(),
             _select = false;
 
-        $scope.data = {};
-        $scope.data.title = _opts.title;
-        $scope.data.list = _opts.list;
-        $scope.data.displayField = _opts.displayField;
-
-        $scope.data.search = '';
+        $scope.data = {
+            title: _opts.title,
+            list: _opts.list,
+            displayField: _opts.displayField,
+            search: ''
+        };
 
         $scope.$on('$ionicView.beforeLeave', function () {
             if (!_select) {

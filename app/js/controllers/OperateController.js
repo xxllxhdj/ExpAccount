@@ -48,9 +48,7 @@ angular.module('ExpAccount.controllers')
             { key: 'Project', refer: 'Project', name: '项目' },
             { key: 'BondCustomer', refer: 'BondCustomer', name: '保证金客户' },
             { key: 'CostProject', refer: 'CostProject', name: '费用项目' },
-            { key: 'Person', refer: 'ExpenditurePerson', name: '列支人员' },
-            { key: 'ExpenditureDepartment', refer: 'ExpenditureDepartment', name: '列支部门' },
-            { key: 'Project', refer: 'Project', name: '项目' }
+            { key: 'Person', refer: 'ExpenditurePerson', name: '列支人员' }
         ], function (fn) {
             $scope['select' + fn.key] = function (tag) {
                 LgSelect.show({
@@ -62,6 +60,16 @@ angular.module('ExpAccount.controllers')
                 });
             };
         });
+
+        $scope.selectExpenditureDepartment = function (tag) {
+            LgSelect.show({
+                title: '列支部门',
+                list: ReferService.get('ExpenditureDepartment'),
+                displayField: 'Name'
+            }).then(function (item) {
+                tag.Department = item;
+            });
+        };
 
         $scope.saveAccount = function () {
             if (!$scope.data.doc.ReimburseBillDetails) {

@@ -53,8 +53,6 @@ angular.module('ExpAccount', [
         $ionicConfigProvider.platform.android.scrolling.jsScrolling(true);
         $ionicConfigProvider.platform.android.navBar.alignTitle('center');
         $ionicConfigProvider.platform.android.backButton.previousTitleText(false);
-        $ionicConfigProvider.platform.android.navBar.transition('view');
-        $ionicConfigProvider.platform.android.views.transition('ios');
         $ionicConfigProvider.platform.android.views.swipeBackEnabled(true);
         $ionicConfigProvider.platform.android.views.swipeBackHitWidth(45);
         $ionicConfigProvider.platform.android.tabs.style('standard');

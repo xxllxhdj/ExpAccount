@@ -181,6 +181,13 @@
     padding: .375em;
 }
 
+.mbsc-ios .mbsc-fr-w {
+    background: #fff;
+}
+.mbsc-ios .mbsc-np-btn-empty {
+    background: #f7f7f7;
+}
+
 .vAccordion--default v-pane {
     margin: -1px;
 }
