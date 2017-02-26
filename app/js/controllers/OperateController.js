@@ -38,7 +38,7 @@ angular.module('ExpAccount.controllers')
             preset: 'decimal',
             onSet: function () {
                 updateSumReimburseMoney();
-                $scope.apply();
+                $scope.$apply();
             }
         };
 
