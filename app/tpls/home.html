@@ -5,7 +5,10 @@
     </ion-nav-buttons>
 	<ion-content>
         <div class="list doc-list">
-            <div class="item fade-in" ng-repeat="doc in data.docs">
+            <div class="item fade-in" ng-repeat="doc in data.docs" ng-switch="doc.DocStatus">
+                <div ng-switch-when="0" class="doc-status"></div>
+                <div ng-switch-when="1" class="doc-status">审批中</div>
+                <div ng-switch-default class="doc-status">已审批</div>
                 <div class="item-line">
                     <span class="doc-no">{{ doc.DocNo }}</span>
                     <span>{{ 'CNY' + doc.Money }}</span>

@@ -350,6 +350,18 @@
     color: #35ccf9;
 }
 
+.doc-status {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%) rotate(-20deg);
+    -webkit-transform: translate(-50%, -50%) rotate(-20deg);
+    transform: translate(-50%, -50%) rotate(-20deg);
+    font-family: LiSu;
+    font-size: 24px;
+    color: rgba(256, 51, 0, 0.6);
+}
+
 /***********************************************************home*******************************************************/
 
 /**********************************************************operate*****************************************************/
