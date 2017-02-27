@@ -87,7 +87,7 @@ angular.module('ExpAccount.services')
         o.getAccountDetail = function(docId) {
             var defer = $q.defer();
 
-            
+
             U9Service.post(APPCONSTANTS.GetReimburseBill, { iD: docId }).then(function (doc) {
                 delete doc.__type;
                 angular.forEach(doc.ReimburseBillDetails, function (detail) {
@@ -126,7 +126,7 @@ angular.module('ExpAccount.services')
 
                     delete doc.__type;
                 });
-                _docs = $filter('orderBy')(docs, ['ReimburseDate', 'DocNo'], true);;
+                _docs = $filter('orderBy')(docs, ['ReimburseDate', 'DocNo'], true);
                 defer.resolve();
             }, function() {
                 defer.resolve();
