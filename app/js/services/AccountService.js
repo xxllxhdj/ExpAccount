@@ -84,6 +84,23 @@ angular.module('ExpAccount.services')
 
             return defer.promise;
         };
+        o.submitDoc = function(docId) {
+            var defer = $q.defer();
+
+            U9Service.post(APPCONSTANTS.SubmitReimburseBill, { iD: docId }).then(function(success) {
+                if (success) {
+                    return getReimburseBillList();
+                } else {
+                    return $q.reject();
+                }
+            }).then(function() {
+                defer.resolve();
+            }).catch(function(err) {
+                defer.reject(err);
+            });
+
+            return defer.promise;
+        };
         o.getAccountDetail = function(docId) {
             var defer = $q.defer();
 

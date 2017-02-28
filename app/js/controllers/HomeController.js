@@ -21,14 +21,24 @@ angular.module('ExpAccount.controllers')
             u9.alert(err.Message || '获取报销单明细失败');
         });
     };
+    $scope.submitDoc = function (doc) {
+        u9.showLoading();
+        AccountService.submitDoc(doc.ID).then(function () {
+            init();
+            u9.hideLoading();
+        }, function (err) {
+            u9.hideLoading();
+            u9.alert(err.Message || '提交失败', '提交报销单');
+        });
+    };
     $scope.deleteDoc = function (doc) {
         u9.showLoading();
         AccountService.deleteDoc(doc.ID).then(function () {
             init();
             u9.hideLoading();
-        }, function () {
+        }, function (err) {
             u9.hideLoading();
-            u9.alert('删除失败', '删除报销单');
+            u9.alert(err.Message || '删除失败', '删除报销单');
         });
     };
 
