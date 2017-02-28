@@ -5,7 +5,7 @@
     </ion-nav-buttons>
 	<ion-content>
         <div class="list doc-list">
-            <div class="item fade-in" ng-repeat="doc in data.docs" ng-switch="doc.DocStatus">
+            <div class="item" ng-repeat="doc in data.docs" ng-switch="doc.DocStatus">
                 <img ng-switch-when="0" class="doc-status">
                 <img ng-switch-when="1" class="doc-status" ng-src="img/approving.png">
                 <img ng-switch-default class="doc-status" ng-src="img/approved.png">

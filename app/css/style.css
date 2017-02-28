@@ -118,17 +118,6 @@
     resize: none;
 }
 
-
-.fade-in.ng-leave,
-.fade-in > .ng-leave {
-    -webkit-transition: all ease-in-out 250ms;
-    transition: all ease-in-out 250ms;
-}
-.fade-in.ng-leave-active,
-.fade-in > .ng-leave-active {
-    opacity: 0;
-}
-
 .mbsc-ios.mbsc-fr-bottom .mbsc-fr-overlay,
 .mbsc-ios.mbsc-fr-top .mbsc-fr-overlay {
     background: rgba(0, 0, 0, 0.4);
