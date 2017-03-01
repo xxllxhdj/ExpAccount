@@ -1,7 +1,7 @@
 angular.module('ExpAccount.controllers')
 
-.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'LgSelect', 'TextInput', 'ReferService', 'User',
-    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, LgSelect, TextInput, ReferService, User) {
+.controller('OperateController', ['$scope', '$ionicHistory', '$ionicScrollDelegate', 'AccountService', 'LgSelect', 'TextInput', 'Numberpad', 'ReferService', 'User',
+    function($scope, $ionicHistory, $ionicScrollDelegate, AccountService, LgSelect, TextInput, Numberpad, ReferService, User) {
         $scope.data = {};
 
         $scope.data.DocumentType = ReferService.get('DocumentType');
@@ -84,6 +84,15 @@ angular.module('ExpAccount.controllers')
                 });
             };
         });
+
+        $scope.selectMoney = function (exp) {
+            Numberpad.show({
+                value: exp.Money,
+                decimal: true
+            }).then(function (number) {
+                exp.Money = number;
+            });
+        };
 
         $scope.saveAccount = function () {
             if (!$scope.data.doc.ReimburseBillDetails || $scope.data.doc.ReimburseBillDetails.length === 0) {

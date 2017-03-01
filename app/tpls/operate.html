@@ -66,11 +66,11 @@
                         <input type="text" placeholder="请选择费用项目" ng-model="exp.CostProject.Name" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
-                    <label class="item item-input item-icon-right prefix-input">
+                    <label class="item item-input item-icon-right prefix-input" ng-click="selectMoney(exp)">
                         <i class="icon ion-ios-medical required-mark-icon"></i>
                         <span class="input-label">发票金额</span>
                         <span class="prefix">CNY</span>
-                        <input type="number" ng-model="exp.Money" mobiscroll-numpad="numPad" placeholder="请输入发票金额" />
+                        <input type="number" ng-model="exp.Money" placeholder="请输入发票金额" readonly="true">
                         <i class="icon ion-ios-arrow-right"></i>
                     </label>
                     <label class="item item-input item-icon-right" ng-click="selectPerson(exp)">

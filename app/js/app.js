@@ -3,7 +3,6 @@ angular.module('ExpAccount', [
     'ionic',
     'mobiscroll-datetime',
     'mobiscroll-select',
-    'mobiscroll-numpad',
     'vAccordion',
 
     'ExpAccount.controllers',
