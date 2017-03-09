@@ -62,7 +62,7 @@ angular.module('ExpAccount.services')
             }).then(function() {
                 defer.resolve();
             }).catch(function(err) {
-                defer.reject(err);
+                defer.reject(err || {});
             });
 
             return defer.promise;
@@ -79,7 +79,7 @@ angular.module('ExpAccount.services')
             }).then(function() {
                 defer.resolve();
             }).catch(function(err) {
-                defer.reject(err);
+                defer.reject(err || {});
             });
 
             return defer.promise;
@@ -96,7 +96,7 @@ angular.module('ExpAccount.services')
             }).then(function() {
                 defer.resolve();
             }).catch(function(err) {
-                defer.reject(err);
+                defer.reject(err || {});
             });
 
             return defer.promise;
@@ -114,7 +114,7 @@ angular.module('ExpAccount.services')
                 });
                 defer.resolve(doc);
             }, function(err) {
-                defer.reject(err);
+                defer.reject(err || {});
             });
 
             return defer.promise;
